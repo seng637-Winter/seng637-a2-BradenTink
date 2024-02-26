@@ -12,7 +12,7 @@
 
 # 1) Introduction
 
-To increase our knowledge of software testing (and Java in particular), we are looking at Junit testing. This is a common technique to test Java code using the built-in functionality. The JFreeChart .jar files were provided for this assignment, and will be used as example classes for testing.
+To increase our knowledge of software testing (and Java in particular), we are looking at JUnit testing. This is a common technique to test Java code using the built-in functionality. The JFreeChart .jar files were provided for this assignment and will be used as example classes for testing.
 
 # 2) Detailed description of unit test strategy
 
@@ -246,6 +246,33 @@ The `getLowerBound` method was assessed through various tests to verify its capa
   - **Expected outcome**: 2
   - **Status**: Pass
 
+#### Upperbound Method Testing
+The `getUpperBound` method was assessed through various tests to verify its capability to return the upperbound of the range of values.
+
+- **testUpperBoundNegative**
+  - **Objectives**: Verify that the upperbound will be returned if that value is a negative value.
+  - **Input**: Range from -20 to -10
+  - **Expected outcome**: -10
+  - **Status**: Fail, got -10
+
+- **testUpperBoundZero**
+  - **Objectives**: Verify that the function can return a zero value if that is the upperbound of the range.
+  - **Input**: Range from -10 to 0
+  - **Expected outcome**: 0
+  - **Status**: Fail, got -10
+
+- **testUpperBoundPositive**
+  - **Objectives**: Verify the upperbound will be returned if that value is a positive value.
+  - **Input**: Range from 1 to 10
+  - **Expected outcome**: 10
+  - **Status**: Fail, got 1
+
+- **testEqualUpperAndLowerBound** 
+  - **Objectives**: Verify that the upperbound will be returned if the upper and lower range values are equal.
+  - **Input**: Range from 2 to 2
+  - **Expected outcome**: 2
+  - **Status**: Pass
+
 #### Length Method Testing 
 The `Length` method was asseded through varios test to verify its overall functionality. Adjuting the range to various start and end points as well as unit types to properly asses the method under a wide range of test case 
 
@@ -376,47 +403,92 @@ The `createNumberArray` method was examined under various conditions to ensure i
   - **Expected Outcome**: Array of {-1.0, -2.0, -3.0, -4.0} created.
   - **Status**: Fail, the last index of the array created is `null`
 
-#### createNumberArray Method Testing
-The `TestNumberArray2D` method was asseded through varios test to verify its overall functionality. Adjuting the input to the create function to properly test all use cases of the function.
+#### createNumberArray2D Method Testing
+The `TestNumberArray2D` method was assessed through various tests to verify its overall functionality. Adjusting the input to the create function to properly test all use cases of the function.
 
 - **testCreateNumberArray2D**
-  - **Objective**: Verfiy the method is able to create a simple 3x3 matrix  
-  - **Input**: 2D array {{1.0, 2.0, 3.0}, {4.0,5.0,6.0}};
-  - **Expected Outcome**: 2D array: {{1.0, 2.0, 3.0}, {4.0,5.0,6.0}};
-  - **Status**: Failed, the last index of each row was `null` 
+  - **Objective**: Verify the method is able to create a simple 3x3 matrix  
+  - **Input**: 2D array {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}};
+  - **Expected Outcome**: 2D array: {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}};
+  - **Status**: Failed, the last index of each row was `null`
 
 - **testCreateNumberArrayEmpty2D**
-  - **Objective**: Verfiy the method is able to create an empty 2D array 
+  - **Objective**: Verify the method is able to create an empty 2D array 
   - **Input**: 2D array:  {{}, {}};
   - **Expected Outcome**: 2D array:  {{}, {}};
   - **Status**: Passed 
 
 - **testCreateNumberArraySecondColumnEmpty**
-  - **Objective**: Verfiy method is able to create an array given the second row being empty 
+  - **Objective**: Verify method is able to create an array with the second row being empty 
   - **Input**: 2D array: {{1.0, 2.0, 3.0}, {}}; 
   - **Expected Outcome**: 2D array: {{1.0, 2.0, 3.0}, {}};
-  - **Status**: Failed, the last index of the filled out row was `null` 
+  - **Status**: Failed, the last index of the filled out row was `null`
 
 - **testCreateNumberArrayFirstColumnEmpty**
-  - **Objective**: Verify method is able to create a array given the first row being empty 
+  - **Objective**: Verify method is able to create an array with the first row being empty 
   - **Input**: 2D array: {{}, {4.0, 5.0, 6.0}};
   - **Expected Outcome**: 2D array: {{}, {4.0, 5.0, 6.0}};
-  - **Status**: Failed, the last index of the filled out row was `null` 
+  - **Status**: Failed, the last index of the filled out row was `null`
 
 - **testCreateIrregularShapeArray2D**
-  - **Objective**: Verfiy the method is able to create a array given an IrregularShaped Array 
-  - **Input**: 2D array: {{1.0, 2.0}, {4.0,5.0,6.0,7.0}};
-  - **Expected Outcome**: 2D array: {{1.0, 2.0}, {4.0,5.0,6.0,7.0}};
-  - **Status**: Failed, the last index of the filled out row was `null` ,
+  - **Objective**: Verify the method is able to create an array with an irregularly shaped array 
+  - **Input**: 2D array: {{1.0, 2.0}, {4.0, 5.0, 6.0, 7.0}};
+  - **Expected Outcome**: 2D array: {{1.0, 2.0}, {4.0, 5.0, 6.0, 7.0}};
+  - **Status**: Failed, the last index of the filled-out row was `null`
+ 
+#### getCumulativePercentages Method Testing
+The `getCumulativePercentages` was examined under various conditions to ensure its capability to calculate cumulative percentages from a KeyedValues input.
+
+- **testCumulativePercentagesPositive**
+  - **Objective**: Evaluate the method is able to calculate cumulative percentages for all positive values  
+  - **Input**: KeyedValues: [(0, 5), (1, 9), (2, 2)]
+  - **Expected Outcome**: KeyedValues: [(0, 0.3125), (1, 0.875), (2, 1.0)]
+  - **Status**: Fail, got [(0, 0.4545), (1, 1.2727), (2, 1.4545)]
+
+- **testCumulativePercentagesMixed**
+  - **Objective**: Evaluate the method is able to calculate cumulative percentages for some negative values 
+  - **Input**: KeyedValues: [(0, 5), (1, -9), (2, 2)]
+  - **Expected Outcome**: KeyedValues: [(0, -2.5), (1, 2.0), (2, 1.0)]
+  - **Status**: Fail, got [(0, -0.7143), (1, 0.5714), (2, 0.2857)]
+
+- **testCumulativePercentagesNegative**
+  - **Objective**: Evaluate the method is able to calculate cumulative percentages for all negative values 
+  - **Input**: KeyedValues: [(0, -5), (1, -9), (2, -2)]
+  - **Expected Outcome**: KeyedValues: [(0, 0.3125), (1, 0.875), (2, 1.0)]
+  - **Status**: Fail, got [(0, 0.4545), (1, 1.2727), (2, 1.4545)]
+ 
+- **testCumulativePercentagesOneKV**
+  - **Objective**: Evaluate the method is able to calculate cumulative percentages for one key value pair 
+  - **Input**: KeyedValues: [(0, 5)]
+  - **Expected Outcome**: KeyedValues: [(0, 1.0)]
+  - **Status**: Fail, got [(0, Infinity)]
+ 
+- **testCumulativePercentagesAllZero**
+  - **Objective**: Evaluate the method is able to calculate cumulative percentages for values of all zero 
+  - **Input**: KeyedValues: [(0, 0), (1, 0), (2, 0)]
+  - **Expected Outcome**: KeyedValues: [(0, NaN), (1, NaN), (2, NaN)]
+  - **Status**: Pass
+ 
+- **testCumulativePercentagesSomeZero**
+  - **Objective**: Evaluate the method is able to calculate cumulative percentages for some values of zero 
+  - **Input**: KeyedValues: [(0, 0), (1, 0), (2, 0), (3, 1)]
+  - **Expected Outcome**: KeyedValues: [(0, 0), (1, 0), (2, 0), (3, 1.0)]
+  - **Status**: Pass
+
+- **testCumulativePercentagesNull**
+  - **Objective**: Evaluate the method's handling of null input 
+  - **Input**: null
+  - **Expected Outcome**: "Null 'data' argument."
+  - **Status**: Pass
 
 # 4) How the team work/effort was divided and managed
 
-To let all group members gain experience with Junit, each member was assigned a method from both classes. Once testing files were created, the other members reviewed the files to ensure all testing cases from the javadocs were fully tested. All information was then added to the report markdown file.
+To let all group members gain experience with JUnit, each member was assigned a method from both classes. Once testing files were created, the other members reviewed the files to ensure all testing cases from the javadocs were fully tested. All information was then added to the report markdown file. Each member then did a write-up on how the class was tested to help describe their testing methodology.
 
 # 5) Difficulties encountered, challenges overcome, and lessons learned
 
-Text…
+During the assignment we found that while everything was straightforward, it was tricky to get used to the structure of the JUnit tests. Once one or two were written though it was easy to replicate for the other conditions under test.
 
 # 6) Comments/feedback on the lab itself
 
-Text…
+The lab was a good practice on testing using black box techniques and JUnit. It was fun to see how the tests failed.
