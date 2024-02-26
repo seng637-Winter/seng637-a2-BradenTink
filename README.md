@@ -1,4 +1,20 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=9959413&assignment_repo_type=AssignmentRepo)
-seng438-a2
+# 🚀 SENG-637: Group 7
 
-Read [the assignment guideline](seng637-a2.md) 
+Group 7's assignment repo for SENG-637 ✔️
+
+## 🌈 Team Members
+
+- 🏐 **Alton Wong**
+- 🧠 **Ben Reid**
+- 🧢 **Braden Tink**
+- 🐰 **Carissa Chung**
+- 🌶️🍚 **Christian Valdez**
+
+## 📂 Folder Structure
+
+- 📚 **a2 (Java files)**
+
+## 🛠️ Tools & Technologies
+
+- JUnit 4
+- jMock
